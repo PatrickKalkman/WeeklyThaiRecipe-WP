@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<recipes>
+  <recipe id="3" lang="en" title="Tom kha Kai" spiciness="3" week="23" year="2012" preparationtime="10" cooktime="15" image="TomkhaKai.jpg" fornumberofpersons="3">
+    <ingredients>
+      <item>100 grams chickenfilet or breast</item>
+      <item>1 cup of chicken stock/bouillon</item>
+      <item>1 cup of coconutmilk</item>
+      <item>3 pieces fresh or frozen lemongrass</item>
+      <item>2 kaffir limeleaves torn</item>
+      <item>6 slices of galangal(ginger)</item>
+      <item>2 or 3 red chillies in big slices diagonally</item>
+      <item>2 tablespoons of lime juice</item>
+      <item>1 tablespoon fish sauce,better called nam pla</item>
+      <item>½ tablespoon palmsugar</item>
+      <item>2 tablespoons pak chee(coriander)</item>
+      <item>4 big straw mushrooms or regular mushrooms sliced</item>
+      <item>3 little tomatos</item>
+    </ingredients>
+    <directions>
+      <paragraph>First we prepare the lemongrass, use only the bottom white part (about 6 inches),cut off the woody grass part of it. With the flat side of a knife or a heavy object, crush the lemongrass so the flavour comes free. Cut into 2 inch skices.</paragraph>
+      <paragraph>Put the chickenstock into a pot and bring it to boil. Then put in the galangal, lemongrass, sugar and lime leaves. Let it boil on a low heat for 5 minutes. Add the coconut milk, chillies, fish sauce and boil on a low heat for another 5 minutes.</paragraph>
+      <paragraph>Then add the chicken tomatos and mushrooms and cook till the chicken is just cooked. When the chicken is all white on the outside, it's 90% done. Turn off the heat, add the lime juice and garnish with the pak chee leaves.</paragraph>
+      <paragraph>Taste your soup, it must be a little bit salty, but most of all sweet and sour. Sweet from the coconut milk and sour from the limejuice. Than again spicy from the chillies. If needed you can bring your soup at taste wit nam pla(salt), lemon juice (sour), coconutmilk and sugar(sweet).</paragraph>
+      <paragraph>Be sure you add the lemonjuice at the end otherwise it looses its fresh taste.</paragraph>
+    </directions>
+  </recipe>
+  - <recipe id="2" lang="en" title="Green Curry with chicken" spiciness="2" week="23" year="2012" preparationtime="10" cooktime="15" image="GreenCurry.jpg" fornumberofpersons="4">
+    - <ingredients>
+      <item>400 grams chickenfilet</item>
+      <item>1 tablespoon oil(arachide is the best)</item>
+      <item>3 tablespoons green curry paste</item>
+      <item>2 ½ cups of coconutmilk</item>
+      <item>2 kaffir limeleaves torn</item>
+      <item>10 small Thai eggplants sliced in 4 pieces</item>
+      <item>2 or 3 red chillies sliced diagonally</item>
+      <item>some sweet basil leaves</item>
+      <item>1 ½ tablespoon fish sauce,better called nam pla</item>
+      <item>1 ½ tablespoon palmsugar</item>
+    </ingredients>
+    - <directions>
+      <paragraph>Slice the chicken into thin pieces, about 3 cm thick. Stirfry the green curry paste in oil over medium heat in a wok until the oil and paste are fully mixed, lower the heat, gradually add 1 1/2 cups of the coconut milk a little at a time, stir until a film of green oil comes to the surface.</paragraph>
+      <paragraph> Add the chicken and kaffir lime leaves, continue cooking for 3 minutes until the chicken is cooked through.Add the remaining coconut milk, season with palm sugar and fish sauce to your taste. When the mixture starts to boil gain than add the eggplants. Cook until the eggplants are done. </paragraph>
+      <paragraph>Before serving sprinkle the sweet basil leaves and red chilies over as a garnish.Very tasteful with a real Thai Jasmin rice.</paragraph>
+    </directions>
+  </recipe>
+  <recipe id="1" lang="en" title="Som tam Thai" spiciness="5" week="23" year="2012" preparationtime="15" cooktime="15" image="SomTamThai.jpg" fornumberofpersons="6">
+    <ingredients>
+      <item>10 Thai chillies(bird peppers)peppers sliced</item>
+      <item>8 peeled parts of garlic</item>
+      <item>2 tablespoons small dried shrimps</item>
+      <item>1 peeled unripe papaya sliced in long thin strips</item>
+      <item>1 cup of long beans cut in pieces</item>
+      <item>1 carrot sliced in long thin strips</item>
+      <item>2 or 3 tablespoons of concentrated tamarind juice mixed with warm water as a syrup</item>
+      <item>juice from 3 of limes</item>
+      <item>2 or 3 tablespoons fish sauce,better called nam pla</item>
+      <item>2 or 3 tablespoons palmsugar melted in 1 tablespoon of water as a syrup</item>
+      <item>12 cherry tomatoes sliced in halves</item>
+      <item>1/4 cup of pounded roasted peanuts</item>
+    </ingredients>
+    <directions>
+      <paragraph>Prepare the ingredients as mentioned above.</paragraph>
+      <paragraph>We need a large mortar from clay with a wooden pestle. Pound the garlic and chillies to a paste. First add the dried shrimp and long beans and pound to bruise(the tastes will come free). Now we add the green papaya and carrot. Stir well with a spoon and pound to bruise the vegetables at the same time so that the vegetables absorb the heat and flavor of the chillies and garlic.</paragraph>
+      <paragraph>Than it is time to add the tamarind and lime juice,the fish sauce and the palm sugar.Do not add all the last ingredients at once, but taste and add them to your taste. Stir and pound a bit more to blend the vegetables with the sweet and sour flavors. Taste again and adjust flavors as you wish. At last we add the tomato pieces, stir and pound very lightly to mix with the rest of the salad.</paragraph>
+      <paragraph>Put your salad on  nice serving plate and finish to sprinkle the salad with the peanuts.</paragraph>
+      <paragraph>You will be surprised about the tastefulness and freshness of this salad .</paragraph>
+    </directions>
+  </recipe>
+</recipes>

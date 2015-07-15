@@ -1,0 +1,26 @@
+﻿@using System.Web.Mvc;
+
+@helper Script(string scriptName, UrlHelper url)
+{
+    <script src="@url.Content("~/Public/javascript/" + scriptName)" type="text/javascript"></script>
+}
+
+@helper Css(string cssName, UrlHelper url)
+{
+    <link href="@url.Content("~/Public/stylesheets/" + cssName)" rel="stylesheet" type="text/css" />
+}
+
+@helper Image(string imageName, string altImage, UrlHelper url)
+{
+    <img src="@url.Content("~/Public/images/" + imageName)" border="0" alt="@altImage" />
+}
+
+@helper Image(string imageName, string altImage, string id, UrlHelper url)
+{
+    <img id="@id" src="@url.Content("~/Public/images/" + imageName)" alt="@altImage" />
+}
+
+@helper Image(string imageName, string altImage, string id, string cssclass, UrlHelper url)
+{
+    <img id="@id" src="@url.Content("~/Public/images/" + imageName)" alt="@altImage" class="@cssclass" />
+}

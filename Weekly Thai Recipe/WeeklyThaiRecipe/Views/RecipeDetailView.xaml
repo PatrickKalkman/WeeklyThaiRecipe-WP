@@ -1,0 +1,62 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="WeeklyThaiRecipe.Views.RecipeDetailView2"
+    Style="{StaticResource DefaultPage}"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:my="clr-namespace:Microsoft.Advertising.Mobile.UI;assembly=Microsoft.Advertising.Mobile.UI"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=RecipeDetailViewModel}"
+    shell:SystemTray.IsVisible="True">
+
+    <phone:PhoneApplicationPage.Resources>
+        <DataTemplate x:Key="IngredientDataTemplate">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="•" VerticalAlignment="Center"/>
+                <TextBlock HorizontalAlignment="Left" Margin="10,6" TextWrapping="Wrap" Text="{Binding Mode=OneWay}" VerticalAlignment="Center" Width="325"/>
+            </StackPanel>
+        </DataTemplate>
+    </phone:PhoneApplicationPage.Resources>
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock x:Name="ApplicationTitle" Text="WEEKLY THAI RECIPE" Style="{StaticResource PhoneTextNormalStyle}"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <ScrollViewer BorderThickness="0" Margin="12,0,0,12">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{Binding RecipeViewModel.ImageSource}" Width="196" Height="196" VerticalAlignment="Top" HorizontalAlignment="Left" />
+                        <TextBlock Text="{Binding RecipeViewModel.Model.Title}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" Margin="7,0,12,5" FontSize="40" FontFamily="Segoe WP Light" Foreground="{StaticResource PhoneForegroundBrush}" VerticalAlignment="Top" HorizontalAlignment="Left" Width="205"/>
+                    </StackPanel>
+                    <TextBlock Text="Ingredients" FontSize="48" />
+                    <ListBox x:Name="Ingedrients" ItemsSource="{Binding RecipeViewModel.Model.Ingredients}" ItemTemplate="{StaticResource IngredientDataTemplate}"  toolkit:TiltEffect.IsTiltEnabled="True" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                    <TextBlock Text="Directions" FontSize="48" />
+                    <TextBlock Text="{Binding RecipeViewModel.Model.Directions}" TextWrapping="Wrap" />
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+        <Grid x:Name="AdvertisementRow" Grid.Row="2">
+            <my:AdControl AdUnitId="Your ad unit id" ApplicationId="Your application Id" Height="80" HorizontalAlignment="Left" Margin="0,-6,0,0" Name="adControl1" VerticalAlignment="Top" Width="480" />
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>

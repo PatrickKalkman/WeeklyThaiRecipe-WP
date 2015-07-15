@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>@ViewBag.Title - Weekly Thai Recipe Management</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        @Content.Css("Site.css", Url)
+        @Content.Script("modernizr-2.0.6-development-only.js", Url)
+        @Content.Script("jquery-1.6.2.js", Url)
+        @RenderSection("scripts", false)
+    </head>
+    <body>
+        <div id="errorDialog" class="errorDialog" style="display: none">
+            <div id="errorIcon" class="errorIcon" style="cursor: pointer;" ><!-- --></div>
+            <div class="messageText">
+                <span id="errorMessage"></span>
+            </div>
+        </div>
+        @this.RenderBody()
+    </body>
+</html>
+<script type="text/javascript">
+
+    var errorIcon = $('#errorIcon');
+    if (errorIcon.length > 0) {
+        errorIcon.click(function () {
+            $('#errorDialog').hide();
+            $('#errorMessage').html('');
+        });
+    }
+
+</script>
+
+@RenderSection("bottom_scripts", false)

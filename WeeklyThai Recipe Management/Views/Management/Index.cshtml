@@ -1,0 +1,85 @@
+﻿@model WeeklyThaiRecipeManagement.ViewModel.ManagementViewModel
+@{
+    ViewBag.Title = "Index";
+}
+@section bottom_scripts
+{
+    @Content.Script("phone.management.js", Url)
+    
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            var errorHandler = new generalErrorHandler();
+            errorHandler.initialize();
+
+            var toast = new toastInitializer();
+            toast.initialize('@Url.Action("Send", "api/Toast")');
+
+            var tile = new tileInitializer();
+            tile.initialize('@Url.Action("Send", "api/Tile")');
+
+            var recipe = new recipeSaver();
+            recipe.initalize('@Url.Action("Save", "api/Recipe")');
+
+        });
+
+    </script>
+
+}
+<header>
+        <div class="content-wrapper">       
+            <div class="float-left">
+                <p class="site-title"><a href="/">Weekly Thai Recipe Management</a></p>
+            </div>
+        </div>
+    </header>
+<div id="body">
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h2>Management of connected Phones</h2>
+            </hgroup>
+            <p>Send Toast and Tile notification to the subscribed windows phones.
+            </p>
+            <p>Currently there are @Model.NumberOfPhonesRegistered phones registered to receive toast and tile notifications.</p>
+        </div>
+    </section>
+        <section class="content-wrapper main-content clear-fix">
+            <h3>Send a toast to the connected phones</h3>
+            <div>
+                <div>Toast title:</div>
+                <div>@Html.TextBoxFor(m => m.ToastTitle, new { @id="toastTitle"})</div>
+                <div>Toast message:</div>
+                <div>@Html.TextBoxFor(m => m.ToastMessage, new { @id="toastMessage"})</div>
+                <button id="sendToastButton">Send Toast</button>
+            </div>
+           
+            <h3>Send a tile to the connected phones</h3>
+            <div>
+                <div>Front title:</div>
+                <div>@Html.TextBoxFor(m => m.FrontTitle, new { @id="frontTitle"})</div>
+                <div>Number to show:</div>
+                <div>@Html.TextBoxFor(m => m.NumberToShow, new { @id="numberToShow"})</div>
+                <div>Front image:</div>
+                <div>@Html.TextBoxFor(m => m.FrontImageLocation, new { @id="frontImageLocation"})</div>
+                <div>Back title:</div>
+                <div>@Html.TextBoxFor(m => m.BackTitle, new { @id="backTitle"})</div>
+                <div>Back image:</div>
+                <div>@Html.TextBoxFor(m => m.BackImageLocation, new { @id="backImageLocation"})</div>
+                <div>Back content:</div>
+                <div>@Html.TextBoxFor(m => m.BackContent, new { @id="backContent"})</div>
+                <button id="sendTileButton">Send Tile</button>
+            </div>
+
+            <h3>Store a new recipe</h3>
+            <div>
+                <div>Recipe XML:</div>
+                <div>
+                    <textarea  id="recipeXml" cols="80" rows="10" ></textarea>
+                </div>
+                <button id="saveRecipeButton">Store Recipe</button>
+            </div>
+        </section>    
+
+</div>

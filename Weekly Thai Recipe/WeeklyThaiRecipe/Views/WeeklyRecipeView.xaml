@@ -1,0 +1,123 @@
+﻿ <phone:PhoneApplicationPage 
+    Style="{StaticResource DefaultPage}"
+    x:Class="WeeklyThaiRecipe.Views.WeeklyRecipeView"
+    Navigation:Navigator.Source="{Binding}"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:localControls="clr-namespace:Microsoft.Phone.Controls"
+    xmlns:local="clr-namespace:WeeklyThaiRecipe.TemplateSelector"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:Navigation="clr-namespace:WeeklyThaiRecipe.Navigation"
+    xmlns:StaticResource="clr-namespace:RegiRide.Converters" mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=WeeklyRecipeViewModel}"
+    shell:SystemTray.IsVisible="False">
+	<phone:PhoneApplicationPage.Resources>
+		<DataTemplate x:Key="IngredientDataTemplate">
+			<StackPanel Orientation="Horizontal">
+                <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="•" VerticalAlignment="Center"/>
+                <TextBlock HorizontalAlignment="Left" Margin="10,6" TextWrapping="Wrap" Text="{Binding Mode=OneWay}" VerticalAlignment="Center" Width="325"/>
+            </StackPanel>
+		</DataTemplate>
+	</phone:PhoneApplicationPage.Resources>
+
+    <!--LayoutRoot contains the root grid where all other page content is placed-->
+    <Grid x:Name="LayoutRoot">
+        <!--Panorama control-->
+            <localControls:DynamicBackgroundPanorama Title="Weekly Thai Recipe" x:Name="pano1" Background="{Binding PanoramaBackground}">
+                
+            <!--Panorama item one-->
+            <controls:PanoramaItem Header="All Recipes">
+                <StackPanel Orientation="Vertical" Name="container">
+                    <StackPanel x:Name="BusyIndicator"  Orientation="Vertical">
+                        <TextBlock Text="Loading...." HorizontalAlignment="Center" Visibility="{Binding BusyIndicatorIsVisible, Mode=OneWay, Converter={StaticResource VisibilityConverter}}"></TextBlock>
+                        <toolkit:PerformanceProgressBar x:Name="ProgressBar" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="456" Height="20" IsIndeterminate="True" Visibility="{Binding BusyIndicatorIsVisible, Mode=OneWay, Converter={StaticResource VisibilityConverter}}" />
+                    </StackPanel>
+                    <!--Double line list with text wrapping-->
+                    <ListBox Margin="0,0,0,0" ItemsSource="{Binding Recipes}" SelectedItem="{Binding SelectedRecipe, Mode=TwoWay}" toolkit:TiltEffect.IsTiltEnabled="True" Height="{Binding ElementName=container, Path=ActualHeight, Mode=OneWay}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <local:RecipeDataTemplateSelector Content="{Binding}">
+                                    <local:RecipeDataTemplateSelector.FirstTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Margin="0,0,0,17" Width="456" Orientation="Horizontal" >
+                                                <Image Source="{Binding ImageSource}" Width="156" Height="156" />
+                                                <TextBlock Text="{Binding Model.Title}" Style="{StaticResource PhoneTextExtraLargeStyle}" Margin="12,0,12,0" FontSize="36" Width="340" FontFamily="Segoe WP Light" TextWrapping="Wrap" Foreground="{StaticResource PhoneForegroundBrush}" VerticalAlignment="Center"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </local:RecipeDataTemplateSelector.FirstTemplate>
+                                    <local:RecipeDataTemplateSelector.NormalTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Margin="0,0,0,17" Width="456" Orientation="Horizontal" >
+                                                <Image Source="{Binding ImageSource}" Width="96" Height="96" />
+                                                <TextBlock Text="{Binding Model.Title}" Margin="12,0,12,0" FontSize="32" Width="300" FontFamily="Segoe WP Light" Foreground="{StaticResource PhoneForegroundBrush}" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </local:RecipeDataTemplateSelector.NormalTemplate>
+                                </local:RecipeDataTemplateSelector>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                   </ListBox>
+                </StackPanel>
+            </controls:PanoramaItem>
+
+            <!--Panorama item two-->
+            <!--Use 'Orientation="Horizontal"' to enable a panel that lays out horizontally-->
+            <controls:PanoramaItem Header="This week">
+                <ScrollViewer BorderThickness="0" Margin="12,0,0,0">
+                	<StackPanel Orientation="Vertical">
+                		<StackPanel Orientation="Horizontal">
+							<Image Source="{Binding CurrentRecipe.ImageSource}" Width="196" Height="196" VerticalAlignment="Top" HorizontalAlignment="Left" />
+							<TextBlock Text="{Binding CurrentRecipe.Model.Title}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" Margin="7,0,12,5" FontSize="40" FontFamily="Segoe WP Light" Foreground="{StaticResource PhoneForegroundBrush}" VerticalAlignment="Top" HorizontalAlignment="Left" Width="205"/>
+						</StackPanel>
+                        <TextBlock Text="Ingredients" FontSize="48" />
+                        <ListBox x:Name="Ingedrients" ItemsSource="{Binding CurrentRecipe.Model.Ingredients}" ItemTemplate="{StaticResource IngredientDataTemplate}"  toolkit:TiltEffect.IsTiltEnabled="True" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                        <TextBlock Text="Directions" FontSize="48" />
+                        <TextBlock Text="{Binding CurrentRecipe.Model.Directions}" TextWrapping="Wrap" />
+                    </StackPanel>
+				</ScrollViewer>
+            </controls:PanoramaItem>
+
+            <!--Panorama item two-->
+            <!--Use 'Orientation="Horizontal"' to enable a panel that lays out horizontally-->
+            <controls:PanoramaItem Header="About">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="..\Images\Tile.png" Height="173" Width="173" Margin="6,0,0,0"></Image>    
+                    	<StackPanel Orientation="Vertical">
+                        	<TextBlock Text="Weekly Thai Recipe" VerticalAlignment="Center" Margin="12,0,0,0" FontSize="26.667" Width="241" />
+                        	<TextBlock VerticalAlignment="Top" Margin="12,0,0,0" FontSize="20" Width="229" HorizontalAlignment="Left" Height="118" Text="Get an authentic Thai recipe automatically delivered every week using this app." TextWrapping="Wrap"/>
+	                    </StackPanel>
+                    </StackPanel>
+                    <TextBlock Text="© Patrick Kalkman" Margin="6,6,0,6"></TextBlock>
+                    <TextBlock Text="www.semanticarchitecture.net" Margin="6,6,0,6" HorizontalAlignment="Left"></TextBlock>
+                    <Button Content="More Apps" Margin="-6,0,0,0" Name="MoreAppsButton" Click="MoreAppsButton_Click" toolkit:TiltEffect.IsTiltEnabled="True" />
+                    <Button Margin="-6,0,0,0" Content="Please submit a review" Name="SubmitReviewButton" Click="SubmitReviewButton_Click" toolkit:TiltEffect.IsTiltEnabled="True" />
+                    <toolkit:ToggleSwitch Header="Allow notifications"  Margin="0,10,0,0" 
+                                  IsChecked="{Binding NotificationsAllowed, Mode=TwoWay}" >
+                        <toolkit:ToggleSwitch.ContentTemplate>
+                            <DataTemplate>
+                                <ContentControl HorizontalAlignment="Left" 
+                Content="{Binding Converter={StaticResource Switch}}"/>
+                            </DataTemplate>
+                        </toolkit:ToggleSwitch.ContentTemplate>
+
+                    </toolkit:ToggleSwitch>
+
+                </StackPanel>
+            </controls:PanoramaItem>
+
+        </localControls:DynamicBackgroundPanorama>
+    </Grid>
+
+    <!--Panorama-based applications should not show an ApplicationBar-->
+
+</phone:PhoneApplicationPage>
